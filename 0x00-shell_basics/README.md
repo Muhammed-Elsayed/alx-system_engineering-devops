@@ -1,1 +1,1 @@
-hello this is readme
+<h1>LEARNING BASH SCRIPTING</h1>
