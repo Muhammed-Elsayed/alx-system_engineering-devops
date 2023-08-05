@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# using nc command
+
+nc -l localhost 98
