@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-
+# nginx web server listening on port 80
+# returns a page that contains the string "Hello World!"
 # Update package list
 apt-get update
 
