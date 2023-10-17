@@ -14,7 +14,7 @@ service nginx start
 echo "Hello World!" > /var/www/html/index.html
 
 # Check if nginx is running
-if pgrep -x "nginx" > /dev/null
+if pgrep -x "nginx" 
 then
     echo "Nginx is running."
 else
