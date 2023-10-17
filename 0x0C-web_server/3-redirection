@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# Installs, configures, and starts the server
+
+# Update package list
+apt-get update
+
+# Install nginx
+apt-get install -y nginx
+
+# Start nginx
+service nginx start
+
+# Create a default HTML file
+echo "Hello World!" > /var/www/html/index.html
+
+# Create a custom configuration for redirection
+echo "
+server {
+    listen 80;
+
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+    }
+
+    location / {
+        root /var/www/html;
+        index index.html;
+    }
+}" > /etc/nginx/sites-available/default
+
+# Reload nginx to apply the new configuration
+service nginx reload
