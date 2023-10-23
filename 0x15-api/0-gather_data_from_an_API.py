@@ -1,37 +1,34 @@
 #!/usr/bin/python3
-"""A Python script that, using this REST API, for a given employee ID."""
-import requests
+"""
+Fetch data from REST API with requests.
+"""
+
 from sys import argv
+import requests
 
-# link to fetch data from the API
-link = "https://jsonplaceholder.typicode.com/users/"
+base_url = "https://jsonplaceholder.typicode.com/users/"
+response = requests.get(base_url + argv[1])
 
-# get the data from
-response = requests.get(link + argv[1])
 
-# convert the data to json format
-data = response.json()
+def get_employee_data(employee_id):
+    """Get data for an employee."""
+    response = requests.get(base_url + employee_id)
+    return response.json()
 
-# get the name of the employee
-name = data.get("name")
-print("Employee {} is done with tasks".format(name), end="")
 
-# get the total number of tasks of the employee
-response = requests.get(link + argv[1] + "/todos")
+employee_data = get_employee_data(argv[1])
+employee_name = employee_data["name"]
 
-# convert the data to json format
-data = response.json()
+todos_data = requests.get(base_url + argv[1] + "/todos").json()
 
-# get the completed tasks and the total number of them
-tasks = []
-for task in data:
-    if task.get("completed") is True:
-        tasks.append(task.get("title"))
-print("({}/{}):".format(len(tasks), len(data)))
+titles_list = []
 
-# print the completed tasks
-for task in tasks:
-    print("\t {}".format(task))
+for task in todos_data:
+    if task.get('completed') is True:
+        titles_list.append(task.get('title'))
 
-if __name__ == "__main__":
-    pass
+print(f"Employee {employee_name}
+      tasks({len(titles_list)}/{len(todos_data)}): ")
+
+for title in titles_list:
+    print(f"\t{title}")
