@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-
-"""fetching some data using rest api"""
-
-import requests
+"""fetching some data using rest api using 
+python and request library"""
 from sys import argv
+import requests
+
 
 
 link = "https://jsonplaceholder.typicode.com/users/"
