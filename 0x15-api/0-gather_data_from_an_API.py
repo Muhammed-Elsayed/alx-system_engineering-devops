@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 """fetching some data using rest api"""
 
 import requests
