@@ -23,7 +23,7 @@ def display():
         if (task.get('completed') is True):
             titles_ls.append(task.get('title'))
 
-    print("Employee {} is done with tasks ({}/{}): "
+    print("Employee {} is done with tasks({}/{}): "
           .format(employee_name, len(titles_ls), len(todos_response_json)))
 
     for title in titles_ls:
