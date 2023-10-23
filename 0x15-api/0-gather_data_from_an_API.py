@@ -1,34 +1,34 @@
 #!/usr/bin/python3
-"""
-Fetch data from REST API with requests.
-"""
-
+"""fetching some data using rest api using python and request library"""
 from sys import argv
 import requests
 
-base_url = "https://jsonplaceholder.typicode.com/users/"
-response = requests.get(base_url + argv[1])
+
+def display():
+
+    link = "https://jsonplaceholder.typicode.com/users/"
+
+    response = requests.get(link + argv[1])
+
+    json_data = response.json()
+
+    employee_name = json_data["name"]
+
+    todos_response = requests.get(link + argv[1] + "/todos")
+
+    todos_response_json = todos_response.json()
+
+    titles_ls = []
+    for task in todos_response_json:
+        if (task.get('completed') is True):
+            titles_ls.append(task.get('title'))
+
+    print("Employee {} is done with tasks ({}/{}): "
+          .format(employee_name, len(titles_ls), len(todos_response_json)))
+
+    for title in titles_ls:
+        print("\t {}".format(title))
 
 
-def get_employee_data(employee_id):
-    """Get data for an employee."""
-    response = requests.get(base_url + employee_id)
-    return response.json()
-
-
-employee_data = get_employee_data(argv[1])
-employee_name = employee_data["name"]
-
-todos_data = requests.get(base_url + argv[1] + "/todos").json()
-
-titles_list = []
-
-for task in todos_data:
-    if task.get('completed') is True:
-        titles_list.append(task.get('title'))
-
-print(f"Employee {employee_name}
-      tasks({len(titles_list)}/{len(todos_data)}): ")
-
-for title in titles_list:
-    print(f"\t{title}")
+if __name__ == "__main__":
+    display()
