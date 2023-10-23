@@ -5,7 +5,7 @@ import requests
 
 
 def display():
-
+    """display function"""
     link = "https://jsonplaceholder.typicode.com/users/"
 
     response = requests.get(link + argv[1])
