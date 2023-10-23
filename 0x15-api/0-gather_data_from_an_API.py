@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """fetching some data using rest api using python and request library"""
-from sys import argv
 import requests
+from sys import argv
 
 
 def display():
