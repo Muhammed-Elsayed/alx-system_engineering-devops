@@ -1,29 +1,24 @@
 #!/usr/bin/python3
-"""A Python script that, using this REST API, for a given employee ID."""
+"""fetching some data using rest api"""
 
 import requests
 from sys import argv
 
 
-# link to get the data
 link = "https://jsonplaceholder.typicode.com/users/"
 
-# request the data for certain user
 response = requests.get(link + argv[1])
 
-# convert data into json
+
 json_data = response.json()
 
 employee_name = json_data["name"]
 
-# request todos data for one user
 todos_response = requests.get(link + argv[1] + "/todos")
 
-# convert data into json
+
 todos_response_json = todos_response.json()
 
-
-# getting the number of tasks and the title of it
 titles_ls = []
 for task in todos_response_json:
     if (task.get('completed') is True):
