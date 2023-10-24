@@ -11,7 +11,7 @@ def display():
 
     response = requests.get(link + argv[1])
     # get the employee name in json
-    employee_name = response.json().get("name")
+    employee_name = response.json().get("username")
     # get all the tasks data in json format
     todos_response_json = requests.get(link + argv[1] + "/todos").json()
 
