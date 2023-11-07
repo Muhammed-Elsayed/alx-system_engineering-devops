@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""module"""
+"""retrieving data from reddit api"""
 import requests
 
 
