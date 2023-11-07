@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""getting some cool data from reddit api"""
 import requests
 
 
